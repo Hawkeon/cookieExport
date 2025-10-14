@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Manager Pro</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.89 1 3 1.89 3 3V21C3 22.11 3.89 23 5 23H19C20.11 23 21 22.11 21 21V9M19 9H14V4H5V21H19V9Z" fill="currentColor"/>
+          </svg>
+          <h1>Cookie Manager Pro</h1>
+        </div>
+      </header>
+
+      <main class="main">
+        <section class="section">
+          <h2>Current Domain</h2>
+          <div class="domain-info">
+            <span id="current-domain" class="domain-text">Loading...</span>
+            <button id="refresh-domain" class="btn btn-secondary btn-sm">Refresh</button>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="stats">
+            <div class="stat-item">
+              <span class="stat-number" id="cookie-count">0</span>
+              <span class="stat-label">Cookies</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Export Cookies</h2>
+          <div class="export-options">
+            <label class="checkbox-label">
+              <input type="checkbox" id="include-secure" checked>
+              <span class="checkmark"></span>
+              Include secure cookies
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="include-http-only" checked>
+              <span class="checkmark"></span>
+              Include HTTP-only cookies
+            </label>
+          </div>
+          <div class="button-group">
+            <button id="export-current" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 2H6C4.89 2 4 2.89 4 4V20C4 21.11 4.89 22 6 22H18C19.11 22 20 21.11 20 20V8L14 2M18 20H6V4H13V9H18V20Z" fill="currentColor"/>
+              </svg>
+              Export Current Domain
+            </button>
+            <button id="export-all" class="btn btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 2H6C4.89 2 4 2.89 4 4V20C4 21.11 4.89 22 6 22H18C19.11 22 20 21.11 20 20V8L14 2M18 20H6V4H13V9H18V20Z" fill="currentColor"/>
+              </svg>
+              Export All Domains
+            </button>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Import Cookies</h2>
+          <div class="import-area">
+            <div class="file-input-wrapper">
+              <input type="file" id="import-file" accept=".json" class="file-input">
+              <label for="import-file" class="file-input-label">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14 2H6C4.89 2 4 2.89 4 4V20C4 21.11 4.89 22 6 22H18C19.11 22 20 21.11 20 20V8L14 2M18 20H6V4H13V9H18V20Z" fill="currentColor"/>
+                </svg>
+                Choose JSON file
+              </label>
+            </div>
+            <div class="paste-area">
+              <textarea id="import-text" placeholder="Or paste JSON data here..." class="import-textarea"></textarea>
+            </div>
+          </div>
+          <div class="button-group">
+            <button id="import-cookies" class="btn btn-success" disabled>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 2H6C4.89 2 4 2.89 4 4V20C4 21.11 4.89 22 6 22H18C19.11 22 20 21.11 20 20V8L14 2M18 20H6V4H13V9H18V20Z" fill="currentColor"/>
+              </svg>
+              Import Cookies
+            </button>
+            <button id="clear-import" class="btn btn-secondary">Clear</button>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Current Cookies</h2>
+            <button id="toggle-cookies" class="btn btn-secondary btn-sm">Show</button>
+          </div>
+          <div id="cookie-list" class="cookie-list hidden"></div>
+        </section>
+      </main>
+
+      <div id="status-message" class="status-message hidden"></div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+  </html>
