@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cookie Extractor</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Cookie Extractor</h1>
+      <p>Active domain: <strong id="domain">Loading...</strong></p>
+
+      <div class="options">
+        <label><input type="checkbox" id="include-secure" checked> Include secure</label>
+        <label><input type="checkbox" id="include-httponly" checked> Include HttpOnly</label>
+      </div>
+
+      <div class="actions">
+        <button id="export">Export cookies</button>
+        <span id="status" class="status"></span>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Cookie Extractor (minimal)",
+  "version": "0.1.0",
+  "description": "Simple extension to export cookies for the active tab's domain.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Cookie Extractor"
+  },
+  "permissions": ["cookies", "tabs", "activeTab", "storage"],
+  "host_permissions": ["http://*/*", "https://*/*"]
+}
