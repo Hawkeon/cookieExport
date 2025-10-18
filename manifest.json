@@ -4,7 +4,7 @@
       "default_popup": "popup.html",
       "default_title": "__MSG_appName__"
    },
-   "author": "JUNO_OKYO",
+   "author": "Dan_Nhan_De_Tem",
    "background": {
       "service_worker": "background.js"
    },
@@ -13,7 +13,6 @@
    },
    "default_locale": "en",
    "description": "__MSG_appDescription__",
-   "homepage_url": "https://www.junookyo.com/2017/07/j2team-cookies-chrome-extension.html?utm_source=extension&utm_medium=j2team_cookies",
    "host_permissions": [ "http://*/*", "https://*/*" ],
    "icons": {
       "128": "img/logo-128.png",
