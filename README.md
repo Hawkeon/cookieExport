@@ -1,18 +1,40 @@
 # Cookie Extractor (minimal)
 
-This is a minimal Chrome/Chromium extension that exports cookies for the currently active tab's domain to a JSON file.
+Chrome/Chromium extension that automatically exports cookies for websites you visit. No need to open the popup!
 
-How it works
-- The popup queries the active tab URL to determine the domain.
-- It calls chrome.cookies.getAll({ domain }) to retrieve cookies for that domain.
-- It filters out secure or httpOnly cookies depending on UI checkboxes, then downloads a JSON file.
+## Features
+- **Automatic Export**: Cookies are automatically exported when:
+  - You visit a new website (tab URL changes)
+  - Every 5 minutes for the active tab
+- **Keyboard Shortcut**: Press `Ctrl+Shift+E` (Windows/Linux) or `Command+Shift+E` (Mac) to manually trigger export
+- **File Format**: Cookies are saved as JSON files with timestamp in filename
+- **Filtering**: Configurable to include/exclude secure and httpOnly cookies
 
-Load in Chrome/Edge
-1. Open chrome://extensions (or edge://extensions).
-2. Enable Developer mode.
-3. Click "Load unpacked" and select this `cookie-extractor` folder.
-4. Open any tab, click the extension icon, then click "Export cookies".
+## Installation
+1. Open chrome://extensions (or edge://extensions)
+2. Enable Developer mode
+3. Click "Load unpacked" and select this `cookie-extractor` folder
 
-Notes
-- This is for debugging and learning; exporting cookies can be sensitive—don't distribute cookie files containing secrets.
-- Manifest uses permissions: cookies, tabs, activeTab, storage, and host_permissions for http(s).
+## How it works
+- The extension runs in the background and monitors your browsing
+- When you visit a new site, it automatically saves that site's cookies
+- Files are saved as `domain-name-TIMESTAMP.json` in your downloads folder
+- You can still use the popup to manually export if needed
+
+## Settings
+Default settings (stored in chrome.storage.local):
+- Auto-export enabled: true
+- Include secure cookies: true
+- Include HttpOnly cookies: true
+- Export interval: 5 minutes
+
+## Security Note
+- This extension will automatically download cookie data
+- Cookie files may contain sensitive information
+- Be careful with the exported files and don't share them
+- Consider disabling auto-export and using the keyboard shortcut instead if security is a concern
+
+## Privacy
+- Files are saved locally only
+- No data is sent to any remote servers
+- You can review the code to verify this
