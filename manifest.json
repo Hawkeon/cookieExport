@@ -1,12 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "Cookie Extractor (minimal)",
-  "version": "0.1.0",
-  "description": "Simple extension to export cookies for the active tab's domain.",
+  "name": "Todolist (Dark Mode)",
+  "version": "1.0",
+  "description": "Tạo todolist và tự động sắp xếp theo ngày giờ.",
   "action": {
     "default_popup": "popup.html",
     "default_title": "Cookie Extractor"
   },
+  
   "background": {
     "service_worker": "background.js"
   },
@@ -33,5 +34,6 @@
       "description": "Export cookies for current domain"
     }
   }
+  
 }
 

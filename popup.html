@@ -1,27 +1,146 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Cookie Extractor</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <div class="container">
-      <h1>Cookie Extractor</h1>
-      <p>Active domain: <strong id="domain">Loading...</strong></p>
+<head>
+  <title>Todo List</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      width: 380px;
+      padding: 15px;
+      background-color: #1e1e1e; /* Nền tối */
+      color: #e0e0e0; /* Chữ sáng */
+    }
+    h1 {
+      font-size: 20px;
+      text-align: center;
+      color: #ffffff;
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+    #taskForm {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    input[type="text"], input[type="datetime-local"] {
+      padding: 10px;
+      border: 1px solid #444;
+      border-radius: 6px;
+      font-size: 14px;
+      background-color: #333; /* Nền ô nhập liệu */
+      color: #fff; /* Chữ trong ô nhập liệu */
+    }
+    /* Đổi màu cho biểu tượng lịch của datetime-local */
+    input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+    }
+    button[type="submit"] {
+      padding: 10px;
+      background-color: #0a84ff; /* Màu xanh dương giống macOS */
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    button[type="submit"]:hover {
+      background-color: #0073e6;
+    }
+    #taskList {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+    li {
+      background: #2c2c2e; /* Nền của mỗi task */
+      padding: 12px;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      border: 1px solid #444;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start; /* Canh lề theo chiều dọc */
+    }
+    .task-container {
+      display: flex;
+      align-items: flex-start; /* Canh checkbox và nội dung */
+      flex-grow: 1; /* Cho phép nội dung co giãn */
+    }
+    /* Checkbox tùy chỉnh (hình tròn) */
+    .task-check {
+      -webkit-appearance: none;
+      appearance: none;
+      background-color: transparent;
+      margin: 0;
+      font: inherit;
+      color: currentColor;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #888;
+      border-radius: 50%;
+      transform: translateY(3px); /* Căn chỉnh cho đẹp */
+      cursor: pointer;
+      margin-right: 12px;
+      flex-shrink: 0; /* Không bị co lại */
+    }
+    .task-check:checked {
+      background-color: #0a84ff;
+      border-color: #0a84ff;
+    }
+    
+    .task-content {
+      display: flex;
+      flex-direction: column;
+      /* Cho phép xuống dòng nếu text quá dài */
+      word-break: break-word; 
+      white-space: normal;
+    }
+    .task-text {
+      font-size: 16px;
+      color: #f0f0f0;
+    }
+    .task-time {
+      font-size: 13px;
+      color: #888; /* Màu xám cho ngày giờ */
+      margin-top: 4px;
+    }
+    .delete-btn {
+      background: #555;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 12px;
+      flex-shrink: 0; /* Không bị co lại */
+      margin-left: 10px;
+    }
+    .delete-btn:hover {
+      background: #c82333; /* Vẫn giữ màu đỏ khi hover để cảnh báo */
+    }
+    
+    /* Kiểu cho task đã hoàn thành */
+    li.completed .task-text {
+      text-decoration: line-through;
+      color: #888;
+    }
+    li.completed .task-time {
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tất cả</h1> <form id="taskForm">
+    <input type="text" id="taskInput" placeholder="Thêm nhắc nhở mới..." required>
+    <input type="datetime-local" id="taskDateTime" required>
+    <button type="submit" id="addTaskBtn">Thêm</button>
+  </form>
+  
+  <ul id="taskList">
+    </ul>
 
-      <div class="options">
-        <label><input type="checkbox" id="include-secure" checked> Include secure</label>
-        <label><input type="checkbox" id="include-httponly" checked> Include HttpOnly</label>
-      </div>
-
-      <div class="actions">
-        <button id="export">Export cookies</button>
-        <span id="status" class="status"></span>
-      </div>
-    </div>
-
-    <script src="popup.js"></script>
-  </body>
+  <script src="popup.js"></script>
+</body>
 </html>
